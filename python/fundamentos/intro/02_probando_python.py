@@ -15,10 +15,10 @@ print("Ahora veremos un bucle que muestra los números del 1 al 10:")
 
 # pedirle un numero al usuario
 nume = input("Ingrese un numero limite: ")
-limite = int(nume) + 1 # transformar el input a numero
+limite = int(nume) # transformar el input a numero
 
 # Bucle for que recorre los números del 1 al limite
-for num in range(1, limite):
+for num in range(1, limite + 1):
     print(f"El valor actual de num es: {num}")
 
 # Definimos una lista de días laborables
@@ -33,7 +33,7 @@ if dia == "Lunes":
     print("¡Comenzamos la semana con buena energía!")
 elif dia == "Viernes":
     print("¡Cerramos la semana listos para un buen descanso!")
-elif dia == "Sabado" or dia == "Domingo":
+elif dia == "Sabado" or dia == "Domingo": # if con or
     print("¡Aprovecha de descansar todo lo que puedas!")
 else:
     print("¡Cada día es una nueva oportunidad de aprender!")
