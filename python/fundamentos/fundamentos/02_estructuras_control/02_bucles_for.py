@@ -48,7 +48,7 @@ for clave in estudiante:
 #Imprime: Gonzalo, Python
 
 platillos_tipicos = {"México": "Tacos", "Colombia": "Ajiaco", "Costa Rica": "Casado"}
-#Otra forma de iterar a través de las claves
+#Otra forma de iterar a través de las claves (las llaves)
 for clave in platillos_tipicos.keys():
     print(clave)
 #Imprime: México, Colombia, Costa Rica
