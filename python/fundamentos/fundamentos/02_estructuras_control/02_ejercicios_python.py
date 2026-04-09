@@ -130,12 +130,12 @@ def contraseña():
     while intento < 3:
         show = input("Intenta adivinar mi contaseña...")
         if contra == show:
-            print("Lo lograsteee!! ദ്ദി◝ ⩊ ◜.ᐟ")
+            print(f"Lo lograsteee!! ദ്ദി◝ ⩊ ◜.ᐟ al {intento} intento")
             break
         else:
             print("Fallaste")
             intento += 1
-    if intento >= 2:
+    if intento == 3:
         print("(─ ‿ ─)")
 
 # Registro de Nombres
@@ -193,12 +193,177 @@ que sean mayores a 50. Muestra ambos arreglos
 def filto():
     can = int(input("Cuantos numeros vas a ingresar?:_"))
     usuario = []
-    for i in range(can + 1):
-        inpu = int(input(f"Por favor ingresar numero {i + 1}"))
-        if inpu == "":
+    for i in range(can):
+        inpu = int(input(f"Por favor ingresar numero {i + 1}:_"))
+        if inpu != "":
             usuario.append(inpu)
+        else:
+            print("No puedes reponer ese numero...")
     
     nuevoArreglo = []
     for i in range(len(usuario)):
         if usuario[i] >= 50:
             nuevoArreglo.append(usuario[i])
+    print(usuario)
+    print(nuevoArreglo)
+
+# Buscador de Elementos
+"""
+Crea una lista de 10 ciudades. Pide al usuario que ingrese el nombre de una ciudad y el programa debe
+decir si la ciudad se encuentra en la lista y en qué índice (posición) está
+"""
+def elementos():
+    ciudades = ["Nairobi", "Tokio", "Denver", "Berlin", "Denver", 
+                "Rio", "Helsinki", "Marsella", "Helsinki", "Moscu",]
+    ciudad = input("Por favor ingresar una ciudad con mayuscula al principio:_")
+    
+    esta = ciudades.index(ciudad)
+    if esta < len(ciudades):
+        print(f"Tu ciudad si está y se encuentra en la posición {esta}")
+    else:
+        print("Nop, tu ciudad no está...")
+
+# Simulación de Inventario
+"""
+Crea dos arreglos: uno para nombres_productos y otro para precios. Permite al usuario ingresar
+3 productos con sus precios. Luego, muestra una lista formateada: Producto: [Nombre] - Precio: $[Valor].
+"""
+def dosArreglos():
+    productos = []
+    precios = []
+    
+    maxi = 0
+    while maxi < 3:
+        producto = input("Por favor ingresar producto:_")
+        if producto != "":
+            precio = int(input("Por favor ingresar precio:_$"))
+            if precio != "" and precio != 0:
+                productos.append(producto)
+                precios.append(precio)
+                maxi += 1
+            else:
+                print("Por favor ingresar elemento valido")
+        else:
+            print("Por favor ingresar elemento valido")
+    
+    for i in range(3):
+        print(f"Producto: [{productos[i]}] - Precio: ${[precios[i]]}")
+
+# Generador de Lista de Compras
+"""
+Usa un bucle while para que el usuario agregue artículos a una lista de compras. El proceso
+termina cuando el usuario escribe "terminar".Al final, muestra la lista ordenada alfabéticamente.
+"""
+def articulos():
+    print("Que deseas ingresar??")
+    compras = []
+    ok = True
+
+    while ok:
+        cosas = input("> ")
+        
+        if cosas.lower() == "terminar":
+            print("Terminando la lista")
+            ok = False
+        elif cosas != "":
+            compras.append(cosas)
+        else:
+            print("Por favor ingresar elemento valido")
+    print(sorted(compras))
+
+# Análisis de Temperaturas
+"""
+Solicita las temperaturas de los 7 días de la semana y guárdalas en un arreglo. Muestra:
+El promedio semanal.
+Cuántos días la temperatura fue superior a 25 grados.
+El día con la temperatura más baja (asumiendo que el índice 0 es Lunes).
+
+"""
+def semana():
+    dias = ["Luenes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
+    diasSuperior = []
+    baja = 100
+    cant = 0
+    
+    while cant < 7:
+        temps = float(input(f"Ingresa temperatura de dia {dias[cant]}"))
+        
+        if temps < baja:
+            baja = temps
+        elif temps > 25:
+            diasSuperior.append(dias[cant])
+        else:
+            print("Por favor ingresar valor valido...")
+
+
+# Codigo menú ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+continuar = True
+
+while continuar:
+    print("\n--- ejercicios python ---")
+    print("--- 1-. ejercicios uno ---")
+    print("--- 2-. ejercicios dos ---")
+    print("--- 3-. ejercicios tres ---")
+    print("--- 4-. ejercicios cuatro ---")
+    print("--- 5-. ejercicios cinco ---")
+    print("--- 6-. ejercicios seis ---")
+    print("--- 7-. ejercicios siete ---")
+    print("--- 8-. ejercicios ocho ---")
+    print("--- 9-. ejercicios nueve ---")
+    print("--- 10-. ejercicios diez ---")
+    print("--- 11-. ejercicios once ---")
+    print("--- 12-. ejercicios doce ---")
+    print("--- 13-. ejercicios trece ---")
+    print("--- 14-. ejercicios catorce ---")
+    print("--- 15-. ejercicios quince ---")
+    opcion = input("\n--- Elige una opción (1-15) (0 para salir) ---_")
+    if opcion == "1":
+        print("\n--- Ejecutando ejercicio uno ---")
+        print(numerosDinamicos())
+    elif opcion == "2":
+        print("\n--- Ejecutando ejercicio dos ---")
+        print(anios())
+    elif opcion == "3":
+        print("\n--- Ejecutando ejercicio tres ---")
+        print(calculador())
+    elif opcion == "4":
+        print("\n--- Ejecutando ejercicio cuatro ---")
+        print(clasificador())
+    elif opcion == "5":
+        print("\n--- Ejecutando ejercicio cinco ---")
+        print(entero())
+    elif opcion == "6":
+        print("\n--- Ejecutando ejercicio dos ---")
+        print(sumar())
+    elif opcion == "7":
+        print("\n--- Ejecutando ejercicio siete ---")
+        print(frase())
+    elif opcion == "8":
+        print("\n--- Ejecutando ejercicio ocho ---")
+        print(contraseña())
+    elif opcion == "9":
+        print("\n--- Ejecutando ejercicio nueve ---")
+        print(nombres())
+    elif opcion == "10":
+        print("\n--- Ejecutando ejercicio diez ---")
+        print(promedios())
+    elif opcion == "11":
+        print("\n--- Ejecutando ejercicio once ---")
+        print(filto())
+    elif opcion == "12":
+        print("\n--- Ejecutando ejercicio doce ---")
+        print(elementos())
+    elif opcion == "13":
+        print("\n--- Ejecutando ejercicio trece ---")
+        print(dosArreglos())
+    elif opcion == "14":
+        print("\n--- Ejecutando ejercicio catorce ---")
+        print(articulos())
+    elif opcion == "15":
+        print("\n--- Ejecutando ejercicio quince ---")
+        print()
+    elif opcion == "0":
+        print("Saliendo...")
+        continuar = False
+    else:
+        print("No válido...")
