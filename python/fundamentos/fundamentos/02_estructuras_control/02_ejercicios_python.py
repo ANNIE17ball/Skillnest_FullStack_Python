@@ -112,12 +112,16 @@ Pide al usuario una frase o palabra. Utiliza un bucle para recorrer la cadena y 
 vocales tiene en total
 """
 def frase():
-    frase = input("Por favor ingresa una palabra:_")
+    frase = input("Por favor ingresa una palabra:_").lower()
     letras = 0
+    tildes = 0
     for i in frase:
         if i == "a" or i == "i" or i == "e" or i == "o" or i == "u":
             letras += 1
-    print(f"Tu palabra tiene un total de {letras} vocales")
+        elif i == "á" or i == "é" or i == "í" or i == "ó" or i == "ú":
+            letras += 1
+            tildes += 1
+    print(f"Tu palabra '{frase}' tiene un total de {letras} vocales y {tildes} de ellas lleva/n tilde")
 
 # Validación de Contraseña
 """
