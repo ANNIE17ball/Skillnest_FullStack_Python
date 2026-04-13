@@ -115,8 +115,9 @@ def frase():
     frase = input("Por favor ingresa una palabra:_")
     letras = 0
     for i in frase:
-        letras += 1
-    print(f"Tu palabra tiene un total de {letras} letras")
+        if i == "a" or i == "i" or i == "e" or i == "o" or i == "u":
+            letras += 1
+    print(f"Tu palabra tiene un total de {letras} vocales")
 
 # Validación de Contraseña
 """
