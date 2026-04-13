@@ -220,7 +220,7 @@ decir si la ciudad se encuentra en la lista y en qué índice (posición) está
 def elementos():
     ciudades = ["Nairobi", "Tokio", "Denver", "Berlin", "Denver", 
                 "Rio", "Helsinki", "Marsella", "Helsinki", "Moscu",]
-    ciudad = input("Por favor ingresar una ciudad con mayuscula al principio:_")
+    ciudad = input("Por favor ingresar una ciudad con mayuscula al principio:_").capitalize() # primera mayuscual
     
     esta = ciudades.index(ciudad)
     if esta < len(ciudades):
@@ -314,21 +314,21 @@ continuar = True
 
 while continuar:
     print("\n--- ejercicios python ---")
-    print("--- 1-. ejercicios uno ---")
-    print("--- 2-. ejercicios dos ---")
-    print("--- 3-. ejercicios tres ---")
-    print("--- 4-. ejercicios cuatro ---")
-    print("--- 5-. ejercicios cinco ---")
-    print("--- 6-. ejercicios seis ---")
-    print("--- 7-. ejercicios siete ---")
-    print("--- 8-. ejercicios ocho ---")
-    print("--- 9-. ejercicios nueve ---")
-    print("--- 10-. ejercicios diez ---")
-    print("--- 11-. ejercicios once ---")
-    print("--- 12-. ejercicios doce ---")
-    print("--- 13-. ejercicios trece ---")
-    print("--- 14-. ejercicios catorce ---")
-    print("--- 15-. ejercicios quince ---")
+    print("--- 1-. ejercicio uno ---")
+    print("--- 2-. ejercicio dos ---")
+    print("--- 3-. ejercicio tres ---")
+    print("--- 4-. ejercicio cuatro ---")
+    print("--- 5-. ejercicio cinco ---")
+    print("--- 6-. ejercicio seis ---")
+    print("--- 7-. ejercicio siete ---")
+    print("--- 8-. ejercicio ocho ---")
+    print("--- 9-. ejercicio nueve ---")
+    print("--- 10-. ejercicio diez ---")
+    print("--- 11-. ejercicio once ---")
+    print("--- 12-. ejercicio doce ---")
+    print("--- 13-. ejercicio trece ---")
+    print("--- 14-. ejercicio catorce ---")
+    print("--- 15-. ejercicio quince ---")
     opcion = input("\n--- Elige una opción (1-15) (0 para salir) ---_")
     if opcion == "1":
         print("\n--- Ejecutando ejercicio uno ---")
