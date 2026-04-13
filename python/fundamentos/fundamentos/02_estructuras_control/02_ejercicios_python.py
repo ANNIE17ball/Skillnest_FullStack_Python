@@ -294,17 +294,17 @@ def semana():
     while cant < 7:
         temps = float(input(f"Ingresa temperatura del dia {dias[cant]}:_"))
         total += temps
-        if temps == "":
+        
+        if temps != "":
+            if temps < baja:
+                baja = temps
+            elif temps > 25:
+                diasSuperior.append(dias[cant])
+            
+            cant += 1
+        else:
             print("Por favor ingresar valor valido...")
             continue
-        
-        if temps < baja:
-            baja = temps
-        elif temps > 25:
-            diasSuperior.append(dias[cant])
-        else:
-            pass
-        cant += 1
         
     print(f"El primedio de las temperaturas de la semana son de {total / 7}° la temperatura mas baja fue {baja}° y los dias mas calurosos fueron {diasSuperior}")
 
