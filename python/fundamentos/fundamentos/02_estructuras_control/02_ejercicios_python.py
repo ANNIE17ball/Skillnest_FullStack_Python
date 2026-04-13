@@ -282,18 +282,25 @@ El día con la temperatura más baja (asumiendo que el índice 0 es Lunes).
 def semana():
     dias = ["Luenes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     diasSuperior = []
+    total = 0
     baja = 100
     cant = 0
     
     while cant < 7:
-        temps = float(input(f"Ingresa temperatura de dia {dias[cant]}"))
-        
-        if temps < baja:
+        temps = float(input(f"Ingresa temperatura del dia {dias[cant]}:_"))
+        total += temps
+        if temps == "":
+            print("Por favor ingresar valor valido...")
+            break
+        elif temps < baja:
             baja = temps
         elif temps > 25:
             diasSuperior.append(dias[cant])
         else:
-            print("Por favor ingresar valor valido...")
+            pass
+        cant += 1
+        
+    print(f"El primedio de las temperaturas de la semana son de {total / 7}° la temperatura mas baja fue {baja}° y los dias mas calurosos fueron {diasSuperior}")
 
 
 # Codigo menú ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -361,7 +368,7 @@ while continuar:
         print(articulos())
     elif opcion == "15":
         print("\n--- Ejecutando ejercicio quince ---")
-        print()
+        print(semana())
     elif opcion == "0":
         print("Saliendo...")
         continuar = False
