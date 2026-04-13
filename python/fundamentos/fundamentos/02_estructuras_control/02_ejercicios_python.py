@@ -280,7 +280,7 @@ El día con la temperatura más baja (asumiendo que el índice 0 es Lunes).
 
 """
 def semana():
-    dias = ["Luenes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
+    dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     diasSuperior = []
     total = 0
     baja = 100
@@ -291,8 +291,9 @@ def semana():
         total += temps
         if temps == "":
             print("Por favor ingresar valor valido...")
-            break
-        elif temps < baja:
+            continue
+        
+        if temps < baja:
             baja = temps
         elif temps > 25:
             diasSuperior.append(dias[cant])
