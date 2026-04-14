@@ -5,9 +5,8 @@ usando ejemplos inspirados en videojuegos y situaciones atractivas.
 
 # 1. Generador de niveles
 # Imprime todos los niveles del 0 al 100 (incluyendo el 100).
-def ejercicio1():
-    for i in range(101):
-        print(i)
+for i in range(101):
+    print(i)
 
 # 2. Potenciadores de energía (Múltiplos de 2)
 # Imprime los números múltiplos de 2 desde 2 hasta 500 (incluyendo el 500).
@@ -54,32 +53,3 @@ for i in range(inicio, fin, salto):
 
 # Ejemplo: si inicio = 3, fin = 10, y salto = 2
 # Se imprimiría: 4, 6, 8, 10
-
-cero = False
-while cero:
-    print("Bienvenido Skillnest!!, por favor elegir opcion(1-6)")
-    opcion = input(">> ")
-    
-    if opcion == "1":
-        print("\n--- Ejecutando ejercicio uno ---")
-        print(numerosDinamicos())
-    elif opcion == "2":
-        print("\n--- Ejecutando ejercicio dos ---")
-        print(anios())
-    elif opcion == "3":
-        print("\n--- Ejecutando ejercicio tres ---")
-        print(calculador())
-    elif opcion == "4":
-        print("\n--- Ejecutando ejercicio cuatro ---")
-        print(clasificador())
-    elif opcion == "5":
-        print("\n--- Ejecutando ejercicio cinco ---")
-        print(entero())
-    elif opcion == "6":
-        print("\n--- Ejecutando ejercicio dos ---")
-        print(sumar())
-    elif opcion == "0":
-        print("Saliendo...")
-        continuar = False
-    else:
-        print("No válido...")
