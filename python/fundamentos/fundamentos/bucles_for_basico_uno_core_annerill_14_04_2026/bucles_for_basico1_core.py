@@ -5,13 +5,13 @@ usando ejemplos inspirados en videojuegos y situaciones atractivas.
 
 # 1. Generador de niveles
 # Imprime todos los niveles del 0 al 100 (incluyendo el 100).
-for i in range(101):
-    print(i)
+def ejercicio1():
+    for i in range(101):
+        print(i)
 
 # 2. Potenciadores de energía (Múltiplos de 2)
 # Imprime los números múltiplos de 2 desde 2 hasta 500 (incluyendo el 500).
-# (Tu código aquí)for i in range(101):
-for i in range(2, 101, 2):
+for i in range(2, 501, 2):
     print(i)
 
 # 3. Trampa de emojis
@@ -20,21 +20,18 @@ for i in range(2, 101, 2):
 # - Si es divisible por 10, imprime ""
 # ¡Cuidado con la prioridad en tus condicionales!
 for i in range(1, 101):
-    if i % 10 == 0 and i % 5 == 0:
-        print(".☘︎ ݁˖/˙ᵕ˙")
+    if i % 10 == 0:
+        print("🂺 / 🃖 - 🃁")
     elif i % 5 == 0:
-        print("˙ᵕ˙")
+        print("🃖 - 🃁")
     else:
         print(i)
 
 # 4. Suma colosal
 # Suma todos los números pares del 0 al 500,000 e imprime la suma total.
 sumaTotal = 0
-for i in range(5000000):
-    if i % 2 == 0:
-        sumaTotal += i
-    else:
-        continue
+for i in range(0, 500001, 2):
+    sumaTotal += i
 print(sumaTotal)
 
 
@@ -57,3 +54,32 @@ for i in range(inicio, fin, salto):
 
 # Ejemplo: si inicio = 3, fin = 10, y salto = 2
 # Se imprimiría: 4, 6, 8, 10
+
+cero = False
+while cero:
+    print("Bienvenido Skillnest!!, por favor elegir opcion(1-6)")
+    opcion = input(">> ")
+    
+    if opcion == "1":
+        print("\n--- Ejecutando ejercicio uno ---")
+        print(numerosDinamicos())
+    elif opcion == "2":
+        print("\n--- Ejecutando ejercicio dos ---")
+        print(anios())
+    elif opcion == "3":
+        print("\n--- Ejecutando ejercicio tres ---")
+        print(calculador())
+    elif opcion == "4":
+        print("\n--- Ejecutando ejercicio cuatro ---")
+        print(clasificador())
+    elif opcion == "5":
+        print("\n--- Ejecutando ejercicio cinco ---")
+        print(entero())
+    elif opcion == "6":
+        print("\n--- Ejecutando ejercicio dos ---")
+        print(sumar())
+    elif opcion == "0":
+        print("Saliendo...")
+        continuar = False
+    else:
+        print("No válido...")

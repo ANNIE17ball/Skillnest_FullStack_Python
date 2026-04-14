@@ -289,6 +289,7 @@ def semana():
     diasSuperior = []
     total = 0
     baja = 100
+    diaBaja = ""
     cant = 0
     
     while cant < 7:
@@ -297,12 +298,13 @@ def semana():
         
         if temps < baja and temps < 25:
             baja = temps
+            diaBaja = dias[cant]
         elif temps > 25:
             diasSuperior.append(dias[cant])
             
         cant += 1
         
-    print(f"El promedio de las temperaturas de la semana son de {total / 7}° la temperatura mas baja fue {baja}° y los dias mas calurosos fueron {diasSuperior}")
+    print(f"El promedio de las temperaturas de la semana son de {total / 7}° el dia con temperatura mas baja fue el {diaBaja} con {baja}° y los dias mas calurosos fueron {diasSuperior}")
 
 
 # Codigo menú ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
