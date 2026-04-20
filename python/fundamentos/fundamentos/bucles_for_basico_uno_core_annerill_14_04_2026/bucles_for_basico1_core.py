@@ -15,12 +15,12 @@ for i in range(2, 501, 2):
 
 # 3. Trampa de emojis
 # Recorre los puntos del 1 al 100.
-# - Si el número es divisible por 5, imprime ""
-# - Si es divisible por 10, imprime ""
+# - Si el número es divisible por 5, imprime "🃖 - 🃁"
+# - Si es divisible por 10, imprime "🂺"
 # ¡Cuidado con la prioridad en tus condicionales!
 for i in range(1, 101):
     if i % 10 == 0:
-        print("🂺 / 🃖 - 🃁")
+        print("🂺 and 🃖 - 🃁")
     elif i % 5 == 0:
         print("🃖 - 🃁")
     else:
