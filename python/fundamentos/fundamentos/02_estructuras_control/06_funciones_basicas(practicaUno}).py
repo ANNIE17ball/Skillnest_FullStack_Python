@@ -230,7 +230,7 @@ def mostrar_likes():
 
 mostrar_seguidores()
 """
-variables┆ valores    
+variables┆ valores
 ✎_________________________
 salida = Seguidores: 300, Likes: 120, Finalizando conteo
 """
@@ -251,9 +251,8 @@ b = mostrar_reproducciones()
 print(b)
 """
 variables┆ valores
-a        ┆ calcular_incremento(
-b        ┆ mostrar_reproducciones()
+a        ┆ 1
+b        ┆ 4
 ✎_________________________
-salida = 4, 1
-La función mostrar_horas_local() se ejecuta
+salida = Reproducciones: 5000, Incremento calculado: ,1, 4
 """
