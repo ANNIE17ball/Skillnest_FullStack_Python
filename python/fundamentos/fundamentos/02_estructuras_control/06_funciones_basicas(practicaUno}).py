@@ -176,8 +176,7 @@ print(horas_de_juego)
 variables     ┆ valores    
 horas_de_juego┆ 150 〰 350
 ✎_________________________
-salida = 150, 0, 150, 0, 150
-La función mostrar_horas_local() no se llega a ejecutar
+salida = 150, 150, 350, 350 --> se ejecuta ❛ mostrar_horas_local()❜ en la penultima linea
 """
 
 # 12. Similar al anterior, pero la función retorna el valor local 'horas_de_juego'.
@@ -196,7 +195,7 @@ print(horas_de_juego)
 variables     ┆ valores    
 horas_de_juego┆ 150 〰 350
 ✎_________________________
-salida = 150, 350, 350, 350
+salida = 150, 150, 350, 350, 350
 La función mostrar_horas_local() se ejecuta
 """
 
@@ -216,7 +215,7 @@ print(horas_de_juego)
 variables     ┆ valores    
 horas_de_juego┆ 150 〰 350
 ✎_________________________
-salida = 150, 350, 350, 350
+salida = 150, 150, 350, 350
 La función mostrar_horas_local() tiene un retorno
 """
 
@@ -231,7 +230,7 @@ def mostrar_likes():
 
 mostrar_seguidores()
 """
-variables     ┆ valores    
+variables┆ valores    
 ✎_________________________
 salida = Seguidores: 300, Likes: 120, Finalizando conteo
 """
@@ -251,9 +250,9 @@ def calcular_incremento():
 b = mostrar_reproducciones()
 print(b)
 """
-variables     ┆ valores
-a             ┆ calcular_incremento(
-b             ┆ mostrar_reproducciones()
+variables┆ valores
+a        ┆ calcular_incremento(
+b        ┆ mostrar_reproducciones()
 ✎_________________________
 salida = 4, 1
 La función mostrar_horas_local() se ejecuta
