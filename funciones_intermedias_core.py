@@ -10,7 +10,6 @@ Evaluacion core
 # Ranking de puntajes de un torneo de eSports -----------------------------------------------------------------------------------------------------------------------------------
 puntajes = [ [1000, 1500, 2000], [300, 700, 1400] ]
 puntajes[1][0] = 600
-
 print(puntajes)
 
 # Lista de creadores de contenido en una plataforma de streaming ----------------------------------------------------------------------------------------------------------------------
@@ -40,4 +39,5 @@ print(ubicacion)
 
 # 2) Creacion de funciones
 def iterar_diccionario(lista):
+    inte = int(input("Ingresa un numero"))
     
