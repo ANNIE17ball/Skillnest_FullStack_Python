@@ -21,16 +21,12 @@ datos[2]["puntaje"] = 75
 def imprimir(dicci):
     where = int(input(f"Ingresa un indice(0/{len(dicci) - 1}):_"))
     print(f"{dicci[where]["nombre"]} obtuvo {dicci[where]["puntaje"]} puntos")
-print(imprimir(datos))
 
 # 3)
 def valor_de_datos(val):
     if val in datos[0]:
         for i in range(len(datos)):
             print(datos[i][val])
-
-print(valor_de_datos("puntaje"))
-print(valor_de_datos("nombre"))
 
 """
 Evaluacion core
@@ -44,7 +40,6 @@ Evaluacion core
 # Ranking de puntajes de un torneo de eSports -----------------------------------------------------------------------------------------------------------------------------------
 puntajes = [ [1000, 1500, 2000], [300, 700, 1400] ]
 puntajes[1][0] = 600
-print(puntajes)
 
 # Lista de creadores de contenido en una plataforma de streaming ----------------------------------------------------------------------------------------------------------------------
 streamers = [
@@ -52,24 +47,19 @@ streamers = [
     {"nombre": "PixelWarrior", "seguidores": 180000}
 ]
 streamers[0]["nombre"] = "EliteGamerX"
-print(streamers)
 
 # Eventos en distintas ciudades del mundo --------------------------------------------------------------------------------------------------------------------------------------------
 eventos = {
     "Estados Unidos": ["Los Ángeles", "Nueva York", "Las Vegas"],
     "España": ["Madrid", "Barcelona", "Valencia"]
 }
-
 eventos["Estados Unidos"][2] = "San Francisco"
-print(eventos)
 
 # Coordenadas de la sede de un torneo internacional ---------------------------------------------------------------------------------------------------------------------------------------------
 ubicacion = [
     {"latitud": 34.052235, "longitud": -118.243683}
 ]
-
 ubicacion[0]["latitud"] = 40.712776
-print(ubicacion)
 
 # 2) Creacion de funciones ⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘
 
@@ -84,8 +74,6 @@ def iterar_diccionario(lista):
     else:
         print("Por favor ingresar valor valido")
 
-print(iterar_diccionario(streamers))
-
 """ Funcion dos """
 def obtener_valores(clave, lista):
     for i in range(len(lista)):
@@ -94,9 +82,6 @@ def obtener_valores(clave, lista):
             print(lista[i][clave])
         else:
             pass
-
-obtener_valores("nombre", streamers)
-obtener_valores("seguidores", streamers)
 
 """ Funcion tres """
 # diccionario especial
@@ -115,9 +100,59 @@ categorias = {
 }
 
 def mostrar_informacion(diccionario):
-    claves = list(diccionario.keys())
-    for i in range(diccionario):
-        if claves[i] in diccionario:
-            print(f"{len(claves[i])} {claves[i].upper()}")
+    for categoria, lista in diccionario.items():
+        print(f"{len(lista)} {categoria.upper()}")
+        for item in lista:
+            print(item)
 
-mostrar_informacion(categorias)
+# ⫶☰ MENU
+print("Bienvenido a python!")
+print("Este es un menu, por favor seleccionar del uno al cinco para revisar las funciones, ")
+print("seis para ver los diccionarios y 0 para salir")
+
+seguir = True
+while seguir:
+    seleccion = input("Seleccionar nivel >> ")
+    if seleccion == "1":
+        limpiar_consola()
+        print("Navegando al nivel uno...⏅")
+        print(iterar_diccionario(streamers))
+    elif seleccion == "2":
+        limpiar_consola()
+        print("Navegando al nivel dos...⛴")
+        obtener_valores("nombre", streamers)
+        obtener_valores("seguidores", streamers)
+    elif seleccion == "3":
+        limpiar_consola()
+        print("Navegando al nivel tres...☸")
+        mostrar_informacion(categorias)
+    elif seleccion == "4":
+        limpiar_consola()
+        print("Navegando al nivel cuatro...°‧ 𓆝 𓆟 𓆞 ·｡")
+        print(imprimir(datos))
+    elif seleccion == "5":
+        limpiar_consola()
+        print("Navegando al nivel cinco...𓆝𓆟༝˚｡⋆𓆉︎⋆｡˚༝𓆞𓆝")
+        print(valor_de_datos("puntaje"))
+        print(valor_de_datos("nombre"))
+    elif seleccion == "6":
+        limpiar_consola()
+        print("Mostrando diccionarios...𓂃 ོ☼𓂃")
+        print("Diccionario de puntajes")
+        print(puntajes)
+        print("Diccionario de streamers")
+        print(streamers)
+        print("Diccionario de eventos")
+        print(eventos)
+        print("Diccionario de ubicaciones")
+        print(ubicacion)
+        print("Diccionario de categorias")
+        print(categorias)
+        print("Diccionario de datos")
+        print(datos)
+    elif seleccion == "0":
+        limpiar_consola()
+        print("Saliendo...")
+        seguir = False
+    else:
+        print("No válido...")
