@@ -17,8 +17,7 @@ streamers = [
     {"nombre": "GameNinjaPro", "seguidores": 250000},
     {"nombre": "PixelWarrior", "seguidores": 180000}
 ]
-streamers["nombre"]
-print(streamers)
+
 # Eventos en distintas ciudades del mundo
 eventos = {
     "Estados Unidos": ["Los Ángeles", "Nueva York", "Las Vegas"],
