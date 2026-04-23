@@ -3,31 +3,6 @@ import os
 def limpiar_consola():
     os.system('cls')
 
-# MINI DESAFÍO (nivel core)
-# 1. Cambiar el puntaje de Pedro a 75
-# 2. Crear función que imprima:
-#    "Carlos obtuvo 80 puntos"
-# 3. Crear función que reciba "nombre" o "puntaje" e imprima solo esos valores
-
-datos = [
-    {"nombre": "Carlos", "puntaje": 80},
-    {"nombre": "María", "puntaje": 95},
-    {"nombre": "Pedro", "puntaje": 70}
-]
-# 1)
-datos[2]["puntaje"] = 75
-
-# 2)
-def imprimir(dicci):
-    where = int(input(f"Ingresa un indice(0/{len(dicci) - 1}):_"))
-    print(f"{dicci[where]["nombre"]} obtuvo {dicci[where]["puntaje"]} puntos")
-
-# 3)
-def valor_de_datos(val):
-    if val in datos[0]:
-        for i in range(len(datos)):
-            print(datos[i][val])
-
 """
 Evaluacion core
 """
@@ -107,8 +82,8 @@ def mostrar_informacion(diccionario):
 
 # ⫶☰ MENU
 print("Bienvenido a python!")
-print("Este es un menu, por favor seleccionar del uno al cinco para revisar las funciones, ")
-print("seis para ver los diccionarios y 0 para salir")
+print("Este es un menu, por favor seleccionar del uno al tres para revisar las funciones, ")
+print("cuatro para ver los diccionarios y 0 para salir")
 
 seguir = True
 while seguir:
@@ -128,15 +103,6 @@ while seguir:
         mostrar_informacion(categorias)
     elif seleccion == "4":
         limpiar_consola()
-        print("Navegando al nivel cuatro...°‧ 𓆝 𓆟 𓆞 ·｡")
-        print(imprimir(datos))
-    elif seleccion == "5":
-        limpiar_consola()
-        print("Navegando al nivel cinco...𓆝𓆟༝˚｡⋆𓆉︎⋆｡˚༝𓆞𓆝")
-        print(valor_de_datos("puntaje"))
-        print(valor_de_datos("nombre"))
-    elif seleccion == "6":
-        limpiar_consola()
         print("Mostrando diccionarios...𓂃 ོ☼𓂃")
         print("Diccionario de puntajes")
         print(puntajes)
@@ -149,7 +115,6 @@ while seguir:
         print("Diccionario de categorias")
         print(categorias)
         print("Diccionario de datos")
-        print(datos)
     elif seleccion == "0":
         limpiar_consola()
         print("Saliendo...")
