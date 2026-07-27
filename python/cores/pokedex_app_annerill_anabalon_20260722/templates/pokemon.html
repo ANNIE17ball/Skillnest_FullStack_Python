@@ -20,8 +20,10 @@
     </header>
     <nav>
         <div class="nav-container">
+        {# titulo cambiante de la pagina #}
             <p><strong>{{ titulo }}</strong></p>
             <div class="nav-btn">
+            {# Url para la funcion especificada #}
                 <a href="{{ url_for('pokemon') }}" class="navb btn-blue"><i class="bi bi-list-ul"></i> Ver todos</a>
                 <a href="{{ url_for('limit', cantidad=5) }}" class="navb btn-green"><i class="bi bi-funnel-fill"></i>
                     Ver 5 primeros</a>
@@ -30,20 +32,23 @@
     </nav>
     <main>
         <div class="container">
+        {# for para crear y modificar tarjetas con cada pokemon #}
             {% for p in poke %}
             <div class="tarj">
                 <div class="tar-head">
                     <p class="ids">#{{ p.id }}</p>
                     <img class="tarj-img" src="{{ url_for('static', filename='images/' + p.imagen) }}"
-                        alt="{{ p.nombre }}" width="100">
+                        alt="imagen{{ p.nombre }}" width="100">
                 </div>
                 <div class="tar-body">
                     <h3>{{ p.nombre }}</h3>
                     <div class="tipo">
+                    {# añade especificacion de tipo para los colores con clase #}
                         {% for t in p.tipo.split('/') %}
                         <span class="ti-p {{ colores[t.lower()] }}">{{ t }}</span>
-                        {% endfor %}
+                        {% endfor %} 
                     </div>
+                    {# barra milagrosa #}
                     <div class="barra">
                         <p class="grey"><i class="bi bi-lightning-fill"></i> Poder</p>
                         <div class="poder">
@@ -62,6 +67,7 @@
                     </div>
                 </div>
                 <div class="det">
+                {# dirigirse a la funcion buscar con el link detalles #}
                     <a href="{{ url_for('buscar', id=p.id) }}" class="detalles">Ver Detalles</a>
                 </div>
             </div>

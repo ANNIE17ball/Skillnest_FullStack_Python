@@ -1,8 +1,6 @@
 from flask import Flask, render_template
-
 app = Flask(__name__)
 
-# Base de datos ficticia de Pokémon
 pokedex = [
     {"id": 1, "nombre": "Bulbasaur", "tipo": "Planta/Veneno", "imagen": "bulbasaur.png", "poder": 45, "altura": "0.7m", "peso": "6.9kg"},
     {"id": 4, "nombre": "Charmander", "tipo": "Fuego", "imagen": "charmander.png", "poder": 39, "altura": "0.6m", "peso": "8.5kg"},
@@ -17,6 +15,7 @@ pokedex = [
     {"id": 778, "nombre": "Mimikyu", "tipo": "Fantasma/Hada", "imagen": "mimi.png", "poder": 55, "altura": "0.2m", "peso": "0.7kg"}
 ]
 
+# Para devolver colores con css
 colores = {
         "planta": "planta",
         "veneno": "veneno",
