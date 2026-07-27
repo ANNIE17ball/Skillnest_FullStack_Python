@@ -62,7 +62,6 @@ header {
 }
 
 .tar-head {
-    /* Control de tamaño y bordes */
     width: 100%;
     height: 150px;
     position: relative;
@@ -94,26 +93,18 @@ header {
 .ids {
     /* Al activar 'absolute', el elemento flota */
     position: absolute;
-
     /* Lo empujamos a la esquina superior derecha */
     top: 12px;
     /* Distancia desde el borde de arriba */
     right: 12px;
     /* Distancia desde el borde derecho */
-
-    /* Diseño idéntico a la imagen */
     background-color: #4a5568;
-    /* Gris oscuro texturizado */
     color: #ffffff;
-    /* Texto blanco */
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 13px;
-
-    /* Relleno interno para que se vea ovalado y espaciado */
     padding: 4px 10px;
     border-radius: 20px;
-    /* Bordes completamente redondeados */
 }
 
 .tarj-img {
@@ -199,7 +190,6 @@ header {
     color: #ffff;
     font-size: 10px;
 }
-
 /* se logro a la primeraaa!!!! */
 
 .grey {
