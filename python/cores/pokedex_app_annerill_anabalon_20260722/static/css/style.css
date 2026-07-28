@@ -2,10 +2,9 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Elms Sans", sans-serif;
+    font-family: "Elms Sans", sans-serif; /* fuente para toda la pagina */
 }
 
-/* encabezado con titulo */
 header {
     padding-top: 10px;
     display: flex;
@@ -31,9 +30,7 @@ header {
 
 .navb {
     display: inline-block;
-    /* agregado */
     padding: 8px 12px;
-    /* modificado */
     border: none;
     color: #ffff;
     border-radius: 5px;
@@ -49,7 +46,7 @@ header {
     background-color: #198754;
 }
 
-/* main - principaaaaal */
+/* main principal */
 /* me duele la cabezaaaaa */
 .container {
     width: 90%;
@@ -69,7 +66,6 @@ header {
 }
 
 .tar-head {
-    /* Control de tamaño y bordes */
     width: 100%;
     height: 150px;
     position: relative;
@@ -227,7 +223,6 @@ header {
 }
 
 /* pagina error */
-
 .error-page {
     /* equivale exactamente al 100% de la altura de la ventana gráfica (viewport) */
     min-height: 100vh;
@@ -295,6 +290,7 @@ header {
     }
 }
 
+/* responcisividad chica */
 @media (max-width: 480px) {
 
     .hea-cont {
