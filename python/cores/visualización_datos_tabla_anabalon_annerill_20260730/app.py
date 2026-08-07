@@ -84,6 +84,12 @@ def nombre(name):
                                     columna='nombre', 
                                     direccion='asc',
                                     texto=f"Mostrando a {item['nombre']}")
+    return render_template('index.html', 
+                            datos=datos, 
+                            columna='nombre', 
+                            direccion='asc',
+                            pais_sel='todos',
+                            texto="Plataforma no encontrada")
 
 if __name__ == '__main__':
     app.run(debug=True)
