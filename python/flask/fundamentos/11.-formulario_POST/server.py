@@ -9,8 +9,27 @@ def index():
 # /crear_usuario recibe la información
 
 @app.route('/crear_usuario', methods=['POST'])
-
 def crear_usuario():
+    print("Recibiendo información")
+    print("Nombre:", request.form["nombre"])
+    print("Correo:", request.form["email"])
+    print("Edad:", request.form["age"])
+    print("Ciudad:", request.form["ciudad"])
+
+    #JAMAS renderizamos una plantilla ante una solicitud POST
+    return render_template(
+
+        "usuario.html",
+
+        nombre=nombre,
+
+        email=email
+
+    ) #En su lugar, redirigimos a otra ruta
+
+# volver
+@app.route('/volver', methods=['POST'])
+def regresar():
     print("Recibiendo información")
     print(request.form)
 
