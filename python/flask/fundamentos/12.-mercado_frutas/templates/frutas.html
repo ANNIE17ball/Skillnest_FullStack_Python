@@ -44,28 +44,78 @@
         </div>
     </header>
 
-    <!-- ===================================== -->
-    <!-- Formulario                            -->
-    <!-- ===================================== -->
-    <form action="{{ url_for('checkout') }}" method="POST">
-        <div class="container mt-5">
-            <div class="row">
-                <!-- ===================================== -->
-                <!-- Lista de frutas                       -->
-                <!-- ===================================== -->
-                {% for fruta in frutas %}
-                <div class="col-md-6 mb-4">
-                    <img src="{{ url_for('static', filename='images/' + fruta.imagen) }}" class="card-img-top p-2"
-                        alt="{{ fruta.nombre }}" style="height: 200px; object-fit: contain;">
+    <main class="container my-5">
+        <div class="row g-4">
+            {% for fruta in frutas %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 rounded-3 shadow-sm position-relative overflow-hidden h-100">
 
-                    <!-- Texto chico encima de la foto (Esquina superior izquierda) -->
-                    <span class="position-absolute top-0 start-0 m-2 badge bg-dark bg-opacity-75 text-white"
-                        style="font-size: 0.75rem;"> {{ fruta.nombre }}</span>
+                    <!-- Imagen dinámica desde tu carpeta static -->
+                    <img src="{{ url_for('static', filename='images/' + fruta.imagen) }}"
+                        class="card-img-top w-100 h-100 object-fit-cover" alt="{{ fruta.nombre }}">
+
+                    <!-- Contenedor del texto posicionado abajo -->
+                    <div class="position-absolute bottom-0 start-0 w-100 bg-dark bg-opacity-50 text-white p-2">
+                        <h6 class="card-title m-0 fw-bold small text-start">{{ fruta.nombre }}</h6>
+                        <!-- Añadido el símbolo de $ antes del precio -->
+                        <p class="card-text m-0 small text-start text-warning">${{ fruta.precio }}</p>
+                    </div>
+
                 </div>
-                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+        </div>
+
+        <!-- Botón Hacer Pedido -->
+        <div class="text-center my-5">
+            <a class="btn btn-primary btn-lg px-4" href="{{ url_for('index') }}">
+                <i class="bi bi-cart-fill me-2"></i>Hacer un pedido
+            </a>
+        </div>
+    </main>
+
+    <!-- Sección ¿Por qué elegirnos? -->
+    <section class="bg-light py-5">
+        <div class="container text-center">
+            <h3 class="mb-5 fw-bold">¿Por qué elegirnos?</h3>
+            <div class="row g-4">
+
+                <!-- Característica 1 -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-white rounded shadow-sm h-100">
+                        <div class="fs-1 text-success mb-2"><i class="bi bi-shield-check"></i></div>
+                        <h5>100% Orgánico</h5>
+                        <p class="text-muted small">Todas nuestras frutas son cultivadas sin pesticidas ni químicos
+                            dañinos.</p>
+                    </div>
+                </div>
+
+                <!-- Característica 2 -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-white rounded shadow-sm h-100">
+                        <div class="fs-1 text-success mb-2"><i class="bi bi-truck"></i></div>
+                        <h5>Entrega Rápida</h5>
+                        <p class="text-muted small">Entregamos en menos de 48 horas para asegurar la máxima frescura.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Característica 3 -->
+                <div class="col-md-4">
+                    <div class="p-3 bg-white rounded shadow-sm h-100">
+                        <div class="fs-1 text-success mb-2"><i class="bi bi-award"></i></div>
+                        <h5>Calidad Garantizada</h5>
+                        <p class="text-muted small">Si no estás satisfecho con nuestros productos, te devolvemos tu
+                            dinero.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </form>
+    </section>
+
 </body>
 
 </html>
