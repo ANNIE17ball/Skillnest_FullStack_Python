@@ -1,0 +1,15 @@
+.bg-header {
+    /* El degradado negro (rgba 0,0,0,0.6) se coloca ANTES de la URL de la imagen */
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 1.6), rgba(0, 0, 0, 0.6)), 
+    url('/static/images/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70vh;
+}
+
+/* Opcional: asegura que el texto se posicione correctamente sobre las capas */
+.custom-content {
+    z-index: 1;
+}

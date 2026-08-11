@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado de Frutas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- ===================================== -->
+    <!-- Barra de navegación                   -->
+    <!-- ===================================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
+                <i class="bi bi-apple"></i>
+                Mercado de Frutas
+            </a>
+            <div>
+                <a class="nav-link text-white d-inline me-4" href="{{ url_for('index') }}">
+                    Inicio
+                </a>
+                <a class="nav-link text-white d-inline" href="{{ url_for('catalogo') }}">
+                    Catálogo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================================== -->
+    <!-- Encabezado                            -->
+    <!-- ===================================== -->
+    <header class="bg-header container-fluid d-flex align-items-center justify-content-center text-center">
+        <div class="text-white">
+            <h1 class="display-4 fw-bold">Nuestras Frutas</h1>
+            <p class="lead">Descubre nuestra variedad de frutas frescas disponibles.</p>
+        </div>
+    </header>
+
+    <!-- ===================================== -->
+    <!-- Formulario                            -->
+    <!-- ===================================== -->
+    <form action="{{ url_for('checkout') }}" method="POST">
+        <div class="container mt-5">
+            <div class="row">
+                <!-- ===================================== -->
+                <!-- Lista de frutas                       -->
+                <!-- ===================================== -->
+                {% for fruta in frutas %}
+                <div class="col-md-6 mb-4">
+                    <img src="{{ url_for('static', filename='images/' + fruta.imagen) }}" class="card-img-top p-2"
+                        alt="{{ fruta.nombre }}" style="height: 200px; object-fit: contain;">
+
+                    <!-- Texto chico encima de la foto (Esquina superior izquierda) -->
+                    <span class="position-absolute top-0 start-0 m-2 badge bg-dark bg-opacity-75 text-white"
+                        style="font-size: 0.75rem;"> {{ fruta.nombre }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
