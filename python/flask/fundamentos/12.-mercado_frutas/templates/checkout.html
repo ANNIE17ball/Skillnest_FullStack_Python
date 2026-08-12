@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <!-- ===================================== -->
-    <!-- Barra de navegación                   -->
-    <!-- ===================================== -->
+    <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
@@ -50,21 +48,20 @@
                     <h5 class="text-success-custom fw-bold mb-3">Información del Cliente</h5>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <p class="mb-1"><strong>Nombre:</strong> Joe</p>
-                            <p class="mb-0"><strong>Email:</strong> joe@doe.com</p>
+                            <p class="mb-1"><strong>Nombre:</strong> {{ nombre }}</p>
+                            <p class="mb-0"><strong>Email:</strong> {{ email }}</p>
                         </div>
                         <div class="col-md-6">
                             <p class="mb-1"><strong>Dirección de entrega:</strong></p>
-                            <p class="mb-0 text-muted">Alameda #1219</p>
+                            <p class="mb-0 text-muted">{{ direccion }}</p>
                         </div>
                     </div>
 
                     <!-- Detalle del Pedido -->
                     <h5 class="text-success-custom fw-bold mb-3">Detalle del Pedido</h5>
-
                     <!-- Banner de cantidad total -->
                     <div class="bg-info-light p-2 text-center rounded mb-3">
-                        Total de frutas en tu pedido: 5
+                        Total de frutas en tu pedido: {{ total_frutas }}
                     </div>
 
                     <!-- Tabla de Productos -->
@@ -79,20 +76,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for fruta in pedido %}
                                 <tr>
-                                    <td><img src="{{ url_for('static', filename='images/' + fruta.imagen) }}"
-                                            class="p-2 rounded-circle" alt="{{ fruta.nombre }}"
-                                            style="height: 20px; object-fit: contain;">
-                                        Manzana</td>
-                                    <td>$2.5</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-end fw-semibold">$5.0</td>
+                                    <td>
+                                        <img src="{{ url_for('static', filename='images/' + fruta.imagen) }}"
+                                            class="rounded-circle" alt="{{ fruta.nombre }}"
+                                            style="width: 80px; height: 80px; object-fit: cover;">
+                                        {{ fruta.nombre }}
+                                    </td>
+                                    <td>${{ "%.2f"|format(fruta.precio) }}</td>
+                                    <td class="text-center">{{ fruta.cantidad }}</td>
+                                    <td class="text-end fw-semibold">${{ "%.2f"|format(fruta.subtotal) }}</td>
                                 </tr>
+                                {% endfor %}
 
                                 <!-- Fila del Total -->
                                 <tr class="table-light">
                                     <td colspan="3" class="text-end fw-bold py-3">Total:</td>
-                                    <td class="text-end fw-bold text-dark py-3 fs-5">$11.6</td>
+                                    <td class="text-end fw-bold text-dark py-3 fs-5">${{ "%.2f"|format(total) }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -109,7 +110,7 @@
 
                     <!-- Botón Volver -->
                     <div class="text-center mt-4">
-                        <a href="#" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold">
                             <i class="bi bi-arrow-left me-2"></i> Volver a la tienda
                         </a>
                     </div>
