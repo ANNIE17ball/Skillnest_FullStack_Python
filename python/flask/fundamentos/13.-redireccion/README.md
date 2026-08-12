@@ -984,6 +984,7 @@ Antes de continuar con la siguiente lección, responde:
 ### 1.
 
 ¿Por qué no deberíamos renderizar directamente una plantilla después de procesar un formulario `POST`?
+Porque pueden ocurrir errores y no garantiza que se gguarde la información
 
 ### 2.
 
@@ -999,13 +1000,17 @@ y:
 return redirect("/resultado")
 ```
 
+que una solo la muestra, la otra REDIRECCIONA si ocurre algo (post), para luego mostrarlos con get
+
 ### 3.
 
 ¿Por qué `request.form` está disponible en `/registrar`, pero no en `/resultado`?
+porque estamos tomando los datos ingresador por el usuario y asi guardarlos
 
 ### 4.
 
 Si necesitamos mostrar en `/resultado` el nombre del producto enviado desde `/registrar`, ¿cómo podríamos conservar esa información?
+con request
 
 ---
 
