@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Destino</title>
+</head>
+
+<body>
+    <h1>Crear Usuario</h1>
+    <form action="{{ url_for('/enviar') }}" method="POST">
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-arms-up"></i></span>
+            <input type="text" class="form-control" placeholder="Nombre" aria-label="nombre"
+                aria-describedby="addon-wrapping" required>
+        </div>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-cake2-fill"></i></span>
+            <input type="date" class="form-control" placeholder="FechaNacimiento" aria-label="Fecha de nacimiento"
+                aria-describedby="addon-wrapping" required>
+        </div>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-palette-fill"></i></span>
+            <input type="color" class="form-control" placeholder="ColorFavorito" aria-label="Color favorito"
+                aria-describedby="addon-wrapping" required>
+        </div>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-android"></i></span>
+            <input type="text" class="form-control" placeholder="Animal" aria-label="Animal Favorito"
+                aria-describedby="addon-wrapping" required>
+        </div>
+
+        <button type="submit">Revelar Mi Destino</button>
+    </form>
+</body>
+
+</html>
