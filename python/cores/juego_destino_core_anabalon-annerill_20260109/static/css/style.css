@@ -1,40 +1,139 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Elms Sans", sans-serif;
-    /* fuente para toda la pagina */
-}
-
+/* Importar Tipografía */
 body {
-    background: #f8f9fa;
-    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0b0c1b;
+    /* Fondo con patrón cósmico/espacial */
+    background-image: 
+        radial-gradient(circle, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.08) 12px, transparent 12px);
+    background-size: 80px 80px, 160px 160px;
+    background-position: 0 0, 40px 40px;
+    color: #333;
+}
+
+/* Tarjeta Principal */
+.card-destino {
+    max-width: 480px;
+    width: 100%;
+    border-radius: 20px !important;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Encabezado Místico Oscuro */
+.card-header-mystic {
+    background: linear-gradient(180deg, #18122B 0%, #251B37 100%);
+    border-bottom: none;
+}
+
+/* Iconos superiores redondos */
+.icon-header-wrapper {
+    width: 50px;
+    height: 50px;
+    background-color: #6f42c1;
+    border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(111, 66, 193, 0.5);
 }
 
-.card {
-    margin: 50px 0px;
-    max-width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.icon-header-wrapper.yellow-sun {
+    background-color: #ffc107;
+    color: #18122B;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
 }
 
-.contador {
-    font-size: 3.5rem;
-    font-weight: bold;
-    background: #e9ecef;
-    padding: 10px 30px;
-    border-radius: 50px;
+/* Inputs Personalizados */
+.input-custom {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    padding: 4px 8px;
+}
+
+.input-custom .form-control,
+.input-custom .form-select {
+    background: transparent;
+    border: none;
+    box-shadow: none !important;
+}
+
+.extra-small, .fs-7 {
+    font-size: 0.75rem;
+}
+
+/* Esfera de Cristal Decorativa */
+.crystal-ball {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #e0c3fc, #8ec5fc);
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(142, 197, 252, 0.4);
+}
+
+/* Botón Púrpura */
+.btn-purple {
+    background-color: #6f42c1;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #59319d;
+    color: white;
+    box-shadow: 0 5px 15px rgba(111, 66, 193, 0.4);
+}
+
+.text-purple {
+    color: #6f42c1;
+}
+
+/* Recuadro de Predicción */
+.prediction-box {
+    background-color: #eefbe8;
+    border-left: 4px solid #198754;
+    border-radius: 8px;
+}
+
+/* Tarjetas Informativas (Color & Animal) */
+.info-card {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+}
+
+/* Punto de Color Seleccionado */
+.color-dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
     display: inline-block;
-    margin: 10px 0;
+    background-color: #198754; /* fallback */
 }
 
-.btn-group-vertical {
-    gap: 8px;
+/* Mapeo simple de clases de colores */
+.bg-rojo { background-color: #dc3545 !important; }
+.bg-azul { background-color: #0d6efd !important; }
+.bg-verde { background-color: #198754 !important; }
+.bg-morado { background-color: #6f42c1 !important; }
+.bg-amarillo { background-color: #ffc107 !important; }
+
+/* Número de la suerte */
+.lucky-number-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #6f42c1;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(111, 66, 193, 0.3);
 }
 
-.reinicios {
-    color: #6c757d;
+/* Recuadro de Edad */
+.age-box {
+    background-color: #f8f9fa;
+    border-left: 3px solid #6f42c1;
+    border-radius: 8px;
 }

@@ -1,73 +1,110 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
-app = Flask(__name__)
 
-# Clave para manejar sesiones en Flask
+app = Flask(__name__)
 app.secret_key = "clave_secreta"
 
-# Ruta principal que muestra el formulario para ingresar datos
 @app.route("/")
 def index():
     return render_template("index.html")
 
-# Ruta para procesar los datos del formulario y almacenarlos en sesión
 @app.route("/enviar", methods=["POST"])
-def enviar_usuario():
-    # Obtener datos del formulario
-    nombre = request.form["nombre"]
-    edad = request.form["fechaNacimiento"]
-    color = request.form["colorFavorito"]
-    animal = request.form["animal"]
-    
-    # Guardar información en la sesión
-    session["nombre_usuario"] = nombre
-    session["fecha_usuario"] = edad
-    session["color_usuario"] = color
-    session["animal_usuario"] = animal
-    
-    # --------------------------------------
-    # Redireccionar
-    # --------------------------------------
+def enviar():
+    nombre = request.form.get("nombre")
+    edad = request.form.get("edad")
+    color = request.form.get("color")
+    animal = request.form.get("animal")
+
+    if not nombre or not edad or not color or not animal:
+        return "Faltan datos en el formulario", 400
+
+    session["nombre"] = nombre
+    session["edad"] = edad
+    session["color"] = color
+    session["animal"] = animal
+
     return redirect(url_for("futuro"))
 
-# Ruta para mostrar la predicción del futuro basada en los datos ingresados
-@app.route("/futuroUsuario")
+@app.route("/futuro")
 def futuro():
-    # Verificar que existan los datos en sesión
     if "nombre" not in session:
         return redirect(url_for("index"))
-    
-    # Mensajes positivos y negativos
+
+    nombre = session["nombre"]
+    edad_str = session["edad"]
+    color = session["color"]
+    animal = session["animal"]
+
+    # Convertir edad a entero (manejar error si no es número)
+    try:
+        edad = int(edad_str)
+    except ValueError:
+        edad = 0
+
+    # Mensajes base (positivos y negativos) - puedes expandirlos
     mensajes_positivos = [
-        "Tendrás un futuro brillante lleno de éxitos.",
-        "La suerte estará de tu lado en todos tus proyectos.",
-        "Grandes oportunidades te esperan en el amor y el trabajo.",
-        "Tu creatividad te llevará a lugares increíbles.",
-        "Superarás todos los obstáculos con valentía."
+        "✨ Tendrás un futuro brillante lleno de éxitos.",
+        "🍀 La suerte estará de tu lado en todos tus proyectos.",
+        "🌟 Grandes oportunidades te esperan en el amor y el trabajo.",
+        "🌈 Tu creatividad te llevará a lugares increíbles.",
+        "💪 Superarás todos los obstáculos con valentía."
     ]
-    
     mensajes_negativos = [
-        "Cuidado con las decisiones impulsivas, podrían traerte problemas.",
-        "Se avecinan días difíciles, pero todo pasará.",
-        "Alguien cercano podría traicionarte, mantén los ojos abiertos.",
-        "No todo lo que brilla es oro, analiza bien las ofertas.",
-        "Evita los viajes largos en los próximos meses."
+        "😬 Cuidado con las decisiones impulsivas, podrían traerte problemas.",
+        "🌧️ Se avecinan días difíciles, pero todo pasará.",
+        "⚠️ Alguien cercano podría traicionarte, mantén los ojos abiertos.",
+        "🔮 No todo lo que brilla es oro, analiza bien las ofertas.",
+        "😰 Evita los viajes largos en los próximos meses."
     ]
 
-    # Elegir aleatoriamente entre positivo o negativo
-    # random.choice elige de forma equitativa entre todas las posibilidades
-    if random.choice([True, False]):
-        destino = random.choice(mensajes_positivos)
+    # Personalización según color
+    color_mensajes = {
+        "rojo": "Tu pasión y energía te impulsarán a lograr grandes metas.",
+        "azul": "Tu serenidad y sabiduría te guiarán en momentos importantes.",
+        "verde": "Tu conexión con la naturaleza te dará equilibrio y salud.",
+        "morado": "Tu espiritualidad y creatividad te abrirán nuevos caminos.",
+        "amarillo": "Tu alegría y optimismo atraerán el éxito."
+    }
+
+    # Personalización según animal
+    animal_mensajes = {
+        "perro": "Tu lealtad y amistad te harán rodear de personas valiosas.",
+        "gato": "Tu independencia y astucia te llevarán a resolver problemas con ingenio.",
+        "águila": "Tu visión y perspectiva te permitirán ver más allá de lo común.",
+        "león": "Tu valentía y liderazgo inspirarán a otros a seguirte.",
+        "delfín": "Tu inteligencia y sociabilidad te abrirán puertas en el ámbito social."
+    }
+
+    # Personalización por edad
+    if edad < 18:
+        edad_comentario = "Aunque eres joven, tu madurez te permitirá tomar decisiones acertadas."
+    elif edad < 30:
+        edad_comentario = "Estás en una etapa de crecimiento y aprendizaje; aprovecha cada oportunidad."
+    elif edad < 50:
+        edad_comentario = "Tienes experiencia y sabiduría, ahora es momento de cosechar frutos."
     else:
-        destino = random.choice(mensajes_negativos)
+        edad_comentario = "Tu larga trayectoria te ha dado una perspectiva única; sigue compartiendo tu conocimiento."
 
-    # Renderizar la plantilla con los datos
+    # Seleccionar mensaje aleatorio entre positivo y negativo
+    if random.choice([True, False]):
+        destino_base = random.choice(mensajes_positivos)
+        tono = "positivo"
+    else:
+        destino_base = random.choice(mensajes_negativos)
+        tono = "negativo"
+
+    # Construir mensaje personalizado combinando todo
+    mensaje_color = color_mensajes.get(color, "Tu personalidad es única y especial.")
+    mensaje_animal = animal_mensajes.get(animal, "Tu espíritu te guiará por buen camino.")
+
+    # El destino final combina el mensaje base + personalizaciones
+    destino_final = f"{destino_base} {mensaje_color} {mensaje_animal} {edad_comentario}"
+
+    # También podemos pasar variables por separado si el HTML las usa
     return render_template("futuro.html",
-                            nombre = session["nombre"],
-                            edad = session["edad"],
-                            color = session["color"],
-                            animal = session["animal"],
-                            destino = destino)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+                           nombre=nombre,
+                           edad=edad,
+                           color=color,
+                           animal=animal,
+                           destino=destino_final,
+                           tono=tono)  # tono puede usarse para cambiar el estilo
