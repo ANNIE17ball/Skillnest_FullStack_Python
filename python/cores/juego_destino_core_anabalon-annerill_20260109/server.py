@@ -11,12 +11,17 @@ def index():
 @app.route("/enviar", methods=["POST"])
 def enviar():
     nombre = request.form.get("nombre")
-    edad = request.form.get("edad")
+    edad_str = request.form.get("edad")
     color = request.form.get("color")
     animal = request.form.get("animal")
 
-    if not nombre or not edad or not color or not animal:
+    if not nombre or not edad_str or not color or not animal:
         return "Faltan datos en el formulario", 400
+
+    try:
+        edad = int(edad_str)
+    except ValueError:
+        return "La edad debe ser un número válido", 400
 
     session["nombre"] = nombre
     session["edad"] = edad
@@ -31,17 +36,39 @@ def futuro():
         return redirect(url_for("index"))
 
     nombre = session["nombre"]
-    edad_str = session["edad"]
+    edad = session["edad"]          # ya es entero
     color = session["color"]
     animal = session["animal"]
 
-    # Convertir edad a entero (manejar error si no es número)
-    try:
-        edad = int(edad_str)
-    except ValueError:
-        edad = 0
+    # Mensajes personalizados por edad
+    if edad < 18:
+        edad_comentario = "Aunque eres joven, tu madurez te permitirá tomar decisiones acertadas."
+    elif edad < 30:
+        edad_comentario = "Estás en una etapa de crecimiento y aprendizaje; aprovecha cada oportunidad."
+    elif edad < 50:
+        edad_comentario = "Tienes experiencia y sabiduría, ahora es momento de cosechar frutos."
+    else:
+        edad_comentario = "Tu larga trayectoria te ha dado una perspectiva única; sigue compartiendo tu conocimiento."
 
-    # Mensajes base (positivos y negativos) - puedes expandirlos
+    # Mensajes por color
+    color_mensajes = {
+        "rojo": "Tu pasión y energía te impulsarán a lograr grandes metas.",
+        "azul": "Tu serenidad y sabiduría te guiarán en momentos importantes.",
+        "verde": "Tu conexión con la naturaleza te dará equilibrio y salud.",
+        "morado": "Tu espiritualidad y creatividad te abrirán nuevos caminos.",
+        "amarillo": "Tu alegría y optimismo atraerán el éxito."
+    }
+
+    # Mensajes por animal
+    animal_mensajes = {
+        "perro": "Tu lealtad y amistad te harán rodear de personas valiosas.",
+        "gato": "Tu independencia y astucia te llevarán a resolver problemas con ingenio.",
+        "águila": "Tu visión y perspectiva te permitirán ver más allá de lo común.",
+        "león": "Tu valentía y liderazgo inspirarán a otros a seguirte.",
+        "delfín": "Tu inteligencia y sociabilidad te abrirán puertas en el ámbito social."
+    }
+
+    # Selección aleatoria de destino base
     mensajes_positivos = [
         "✨ Tendrás un futuro brillante lleno de éxitos.",
         "🍀 La suerte estará de tu lado en todos tus proyectos.",
@@ -57,54 +84,22 @@ def futuro():
         "😰 Evita los viajes largos en los próximos meses."
     ]
 
-    # Personalización según color
-    color_mensajes = {
-        "rojo": "Tu pasión y energía te impulsarán a lograr grandes metas.",
-        "azul": "Tu serenidad y sabiduría te guiarán en momentos importantes.",
-        "verde": "Tu conexión con la naturaleza te dará equilibrio y salud.",
-        "morado": "Tu espiritualidad y creatividad te abrirán nuevos caminos.",
-        "amarillo": "Tu alegría y optimismo atraerán el éxito."
-    }
+    destino_base = random.choice(mensajes_positivos) if random.choice([True, False]) else random.choice(mensajes_negativos)
 
-    # Personalización según animal
-    animal_mensajes = {
-        "perro": "Tu lealtad y amistad te harán rodear de personas valiosas.",
-        "gato": "Tu independencia y astucia te llevarán a resolver problemas con ingenio.",
-        "águila": "Tu visión y perspectiva te permitirán ver más allá de lo común.",
-        "león": "Tu valentía y liderazgo inspirarán a otros a seguirte.",
-        "delfín": "Tu inteligencia y sociabilidad te abrirán puertas en el ámbito social."
-    }
-
-    # Personalización por edad
-    if edad < 18:
-        edad_comentario = "Aunque eres joven, tu madurez te permitirá tomar decisiones acertadas."
-    elif edad < 30:
-        edad_comentario = "Estás en una etapa de crecimiento y aprendizaje; aprovecha cada oportunidad."
-    elif edad < 50:
-        edad_comentario = "Tienes experiencia y sabiduría, ahora es momento de cosechar frutos."
-    else:
-        edad_comentario = "Tu larga trayectoria te ha dado una perspectiva única; sigue compartiendo tu conocimiento."
-
-    # Seleccionar mensaje aleatorio entre positivo y negativo
-    if random.choice([True, False]):
-        destino_base = random.choice(mensajes_positivos)
-        tono = "positivo"
-    else:
-        destino_base = random.choice(mensajes_negativos)
-        tono = "negativo"
-
-    # Construir mensaje personalizado combinando todo
+    # Combinar todo
     mensaje_color = color_mensajes.get(color, "Tu personalidad es única y especial.")
     mensaje_animal = animal_mensajes.get(animal, "Tu espíritu te guiará por buen camino.")
-
-    # El destino final combina el mensaje base + personalizaciones
     destino_final = f"{destino_base} {mensaje_color} {mensaje_animal} {edad_comentario}"
 
-    # También podemos pasar variables por separado si el HTML las usa
+    numero_suerte = random.randint(1, 99)
+
     return render_template("futuro.html",
                            nombre=nombre,
                            edad=edad,
                            color=color,
                            animal=animal,
                            destino=destino_final,
-                           tono=tono)  # tono puede usarse para cambiar el estilo
+                           numero_suerte=numero_suerte)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
